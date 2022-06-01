@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>test</title>
+    <link href="/2022/05/31/test/"/>
+    <url>/2022/05/31/test/</url>
+    
+    <content type="html"><![CDATA[<p>This is a test</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>环境搭建</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>环境搭建</tag>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>记一次靶机的网络环境搭建</title>
+    <link href="/2022/05/31/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%89%B0%E9%9A%BE%E7%9A%84%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <url>/2022/05/31/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%89%B0%E9%9A%BE%E7%9A%84%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    
+    <content type="html"><![CDATA[<p><strong>Author:     takahashi</strong></p><p>靶机来源： vulnhub<br />靶机名：     Red</p><p><strong>环境提要：</strong></p><p>今天在搭建靶机环境时遇见了一个比较有意思的网络环境搭建，靶机上面没有任何的网络服务。像最基本的network、 networking、 NetworkManager一个都没有，net-tools也没装， ifconfig和route等命令也无法使用了！<br />在这种基础服务都不存在的环境以及大多命令都不可用以及周边没有任何的外接网卡可以使用的情况下要去如何配置，从而使其能够成功出网。<br />仅作记录学习使用，有阐述不清或是不对之处还望各位师傅斧正。</p><p><strong>配置过程：</strong></p><p>首先， 配置一个临时IP：<br /><strong>ip  addr  add  IP&#x2F;掩码位数  dev  网卡名</strong><br /><img src="https://s6.jpg.cm/2022/05/31/PGUmWE.md.png" alt="image.png"></p><p>然后up网卡（一定要up）：<br />** ip  link  set  网卡名  up**<br /><img src="https://s6.jpg.cm/2022/05/31/PGUmWE.png" alt="image.png"></p><p>而后才可以添加网关（没up网卡导致在这边卡了很久）：<br /><strong>ip  route  add  default  via  网关</strong><br /><img src="https://s6.jpg.cm/2022/05/31/PGUpJQ.png" alt="image.png"></p><p>添加后再次up一下网卡后就可以去配置DNS， 结果他这边的dns配置文件是设了个连接后挂载到了&#x2F;run目录下面的一个文件上， 但是被软链的哪个文件是不存在的， 这边是手动创建后去添加dns：<br /><img src="https://s6.jpg.cm/2022/05/31/PGUoGS.png" alt="image.png"><br />如果resolv.conf没有这种特殊情况就直接这么加就可以。<br />然后ping 一下qq试试看：<br /><img src="https://s6.jpg.cm/2022/05/31/PGUBv2.png" alt="image.png"></p><p><strong>PS:  如果配置后已经不出网则检查是否网卡修改成了桥接网卡</strong><br /> </p><p><strong>参考文章：</strong><br /><a href="https://www.cnblogs.com/eflypro/p/13628203.html">https://www.cnblogs.com/eflypro/p/13628203.html</a><br /><a href="https://askubuntu.com/questions/1177719/ip-route-add-error-either-to-is-duplicate-or-10-0-0-1-is-a-garbage">https://askubuntu.com/questions/1177719/ip-route-add-error-either-to-is-duplicate-or-10-0-0-1-is-a-garbage</a><br /><a href="https://www.jb51.net/LINUXjishu/181155.html">https://www.jb51.net/LINUXjishu/181155.html</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>环境搭建</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>环境搭建</tag>
+      
+      <tag>Linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
